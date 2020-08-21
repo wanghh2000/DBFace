@@ -51,7 +51,7 @@ def detect(model, image, threshold=0.4, nms_iou=0.5):
 
     scores = scores.squeeze()
     indices = indices.squeeze()
-    ys = list((indices / hm_width).int().data.numpy())
+    ys = list((indices // hm_width).int().data.numpy())
     xs = list((indices % hm_width).int().data.numpy())
     scores = list(scores.data.numpy())
     box = box.cpu().squeeze().data.numpy()
@@ -92,8 +92,10 @@ def image_demo():
         dbface.cuda()
 
     dbface.load("model/dbface.pth")
-    detect_image(dbface, "datas/selfie.jpg")
-    detect_image(dbface, "datas/12_Group_Group_12_Group_Group_12_728.jpg")
+    # Select small image to test
+    detect_image(dbface, "datas/02.jpg")
+    #detect_image(dbface, "datas/selfie.jpg")
+    #detect_image(dbface, "datas/12_Group_Group_12_Group_Group_12_728.jpg")
 
 
 def camera_demo():
@@ -127,7 +129,7 @@ def camera_demo():
     cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-    image_demo()
+    #image_demo()
     camera_demo()
     
 
