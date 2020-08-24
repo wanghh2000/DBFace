@@ -80,7 +80,10 @@ def detect_image(model, file):
     for obj in objs:
         common.drawbbox(image, obj)
 
-    common.imwrite("detect_result/" + common.file_name_no_suffix(file) + ".draw.jpg", image)
+    cv2.imshow("result", image)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    #common.imwrite("detect_result/" + common.file_name_no_suffix(file) + ".draw.jpg", image)
 
 
 def image_demo():
@@ -93,7 +96,7 @@ def image_demo():
 
     dbface.load("model/dbface.pth")
     # Select small image to test
-    detect_image(dbface, "datas/02.jpg")
+    detect_image(dbface, "datas/03.jpg")
     #detect_image(dbface, "datas/selfie.jpg")
     #detect_image(dbface, "datas/12_Group_Group_12_Group_Group_12_728.jpg")
 
@@ -156,11 +159,8 @@ def video_demo(video_path):
     cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-    #image_demo()
+    image_demo()
     #camera_demo()
     videofile = 'C:/001.mp4'
-    video_demo(videofile)
-    
-
-
+    #video_demo(videofile)
     

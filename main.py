@@ -79,7 +79,7 @@ def detect_image(model, file):
 
     for obj in objs:
         common.drawbbox(image, obj)
-
+    
     common.imwrite("detect_result/" + common.file_name_no_suffix(file) + ".draw.jpg", image)
 
 
@@ -129,8 +129,8 @@ def camera_demo():
     cv2.destroyAllWindows()
 
 if __name__ == "__main__":
-    #image_demo()
-    camera_demo()
+    image_demo()
+    #camera_demo()
     
 
 
